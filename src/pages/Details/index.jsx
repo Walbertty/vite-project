@@ -11,13 +11,13 @@ export function Details() {
         <Container>
             <Header />
 
-            <Section tittle="Links úteis">
-                <ul>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                </ul>
-            </Section>
+                <Section title="Links úteis">
+                    <ul>
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ul>
+                </Section>
 
             <Button title="Voltar" />
         </Container>

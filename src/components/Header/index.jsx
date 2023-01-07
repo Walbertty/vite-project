@@ -5,8 +5,9 @@ export function Header() {
     return (
     <Container>
         <Profile>
-            <img src="https://github.com/Walbertty.png"
-            alt="Foto do Usuário"
+            <img 
+                src="https://github.com/Walbertty.png"
+                alt="Foto do Usuário"
             />
 
             <div>
@@ -16,7 +17,7 @@ export function Header() {
         </Profile>
 
         <Logout>
-            <RiShutDownLine/>
+            <RiShutDownLine />
         </Logout>
 
     </Container>
