@@ -12,7 +12,7 @@ export function Home() {
     return (
         <Container>
             <Brand>
-                <h1>Walberttynotes</h1>
+                <h1>Notes</h1>
             </Brand>
 
             <Header />
@@ -34,7 +34,7 @@ export function Home() {
                         title: 'React',
                         tags: [
                             {id: '1', name: 'react'},
-                            {id: '2', name: 'Nodejs'}
+                            {id: '2', name: 'nodejs'}
                         ]
                     }}
                     />
