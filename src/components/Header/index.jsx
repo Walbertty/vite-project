@@ -3,8 +3,8 @@ import { Container, Profile, Logout } from './styles';
 
 export function Header() {
     return (
-    <Container>
-        <Profile>
+    <Container to="/profile">
+        <Profile to="/profile">
             <img 
                 src="https://github.com/Walbertty.png"
                 alt="Foto do Usuário"
