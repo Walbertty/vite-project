@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 import { api } from "../services/api";
 
@@ -13,8 +13,12 @@ function AuthProvider({ children }) {
             const response = await api.post("/sessions", { email, password });
             const { user, token } = response.data;
 
-            api.defaults.headers.authorization = `Bearer ${token}`;
-            setData({ user, token })
+            localStorage.setItem("@WalberttyNotes:user", JSON.stringify(user));
+            localStorage.setItem("@WalberttyNotes:token", token);
+
+            api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+            setData({ user, token });
 
         } catch (error) {
           if(error.response){
@@ -25,8 +29,53 @@ function AuthProvider({ children }) {
         }
     }
 
+    function signOut(){
+      localStorage.removeItem("@WalberttyNotes:token");
+      localStorage.removeItem("@WalberttyNotes:user");
+
+      setData({});
+    }
+
+    async function updateProfile({ user }) {
+      try {
+
+        await api.put("/user", user);
+        localStorage.setItem("@WalberttyNotes:user", JSON.stringify(user));
+
+         setData({ user, token: data.token });
+         alert("Perfil atualizado!") ;        
+        
+      } catch (error) {
+        if(error.response){
+          alert(error.response.data.message);
+        }else{
+          alert("Não foi possível atualizar o perfil.");
+        }
+      }
+    }
+
+    useEffect(() => {
+      const token = localStorage.getItem("@WalberttyNotes:token");
+      const user = localStorage.getItem("@WalberttyNotes:user");
+
+      if(token && user) {
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+        setData({
+          token,
+          user: JSON.parse(user)
+        });
+      }
+    }, []);
+
     return (
-        <AuthContext.Provider value={{ signIn, user: data.user }}>
+        <AuthContext.Provider value={{ 
+          signIn,
+          signOut,
+          updateProfile, 
+          user: data.user, 
+          }}
+          >
             {children}
         </AuthContext.Provider>
     )
