@@ -7,6 +7,7 @@ import { AuthRoutes } from './auth.routes'
 export function Routes() {
     const { user } = useAuth();
     
+    //console.log(!!!user, "user do LocalStorage")
     return (
         <BrowserRouter>
             { user ? <AppRoutes /> : <AuthRoutes />}
