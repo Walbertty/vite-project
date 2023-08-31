@@ -29,7 +29,7 @@ export function SignUp() {
         .catch(error => {
             if(error.response) {
                 alert(error.response.message);
-            }else {
+            } else {
                 alert("Não foi possível cadastrar");
             }
         });

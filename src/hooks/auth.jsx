@@ -21,10 +21,11 @@ function AuthProvider({ children }) {
             setData({ user, token });
 
         } catch (error) {
+
           if(error.response){
             alert(error.response.data.message);
-          }else{
-            alert("Não foi possível entrar");
+          } else{
+            alert("Não foi possível entrar.");
           }
         }
     }
@@ -48,6 +49,7 @@ function AuthProvider({ children }) {
         }
 
         await api.put("/users", user);
+        
         localStorage.setItem("@WalberttyNotes:user", JSON.stringify(user));
 
          setData({ user, token: data.token });
