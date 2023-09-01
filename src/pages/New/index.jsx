@@ -7,8 +7,9 @@ import { Input } from '../../components/Input';
 import { Textarea } from '../../components/Textarea';
 import { NoteItem } from '../../components/NoteItem';
 import { Section } from '../../components/Section';
-import { Button } from '../../components/Button';
 import { ButtonText } from '../../components/ButtonText';
+import { Button } from '../../components/Button';
+
 
 import { api } from '../../services/api';
 
@@ -83,8 +84,8 @@ export function New() {
                 <header>
                     <h1>Criar nota</h1>
                     <ButtonText
-                    title="Volta"
-                    onClick={handleBack}
+                        title="Volta"
+                        onClick={handleBack}
                     />
                 </header>
 

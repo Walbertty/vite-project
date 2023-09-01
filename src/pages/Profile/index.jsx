@@ -7,14 +7,15 @@ import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
 
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg';
+
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
-import { ButtonText } from '../../components/ButtonText';
+//import { ButtonText } from '../../components/ButtonText';
 
 import { Container, Form, Avatar } from "./styles";
 
 export function Profile() {
-     const { user, updateProfile } = useAuth();
+    const { user, updateProfile } = useAuth();
 
     const [name, setName] = useState(user.name);
     const [email, setEmail] = useState(user.email);
@@ -33,14 +34,15 @@ export function Profile() {
     }
 
     async function handleUpdate() {
-        const updated ={
+        const updated = {
             name,
             email,
             password: passwordNew,
             old_password: passwordOld
-        }
+        };
 
         const userUpdated = Object.assign(user, updated);
+        //return console.log(userUpdated);
 
         await updateProfile({ user: userUpdated, avatarFile });
     }
@@ -113,7 +115,10 @@ export function Profile() {
                     onChange={e => setPasswordNew(e.target.value)}
                 />
 
-                <Button title="Salvar" onClick={handleUpdate} />
+                <Button
+                title="Salvar"
+                onClick={handleUpdate}
+                />
             </Form>
         </Container>
     )
