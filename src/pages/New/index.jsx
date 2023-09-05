@@ -53,7 +53,7 @@ export function New() {
     async function handleNewNote() {
         
         if(!title){
-            return alert("Digite o título da nota")
+            return alert("Digite um título ara a nota e Observações.")
         }
 
         if(newLink){
@@ -64,7 +64,7 @@ export function New() {
             return alert("Lembre de adicionar a Tag clicando no + ou deixe o campo vazio :) !")
         }
 
-        await api.post("/notes", {
+        await api.post("notes", {
             title,
             description,
             tags,
